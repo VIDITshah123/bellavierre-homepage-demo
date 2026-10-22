@@ -35,65 +35,65 @@ export default function InstagramFeed() {
     if (scrollRef.current) scrollRef.current.dataset.dragging = 'false'
   }
 
-  return (
-    <section className="instagram-section" aria-label="Instagram Feed">
-      <div className="instagram-inner">
-        <div className="instagram-panel">
-          {/* Header */}
-          <div className="instagram-header container">
-            <div className="instagram-header-left">
-              <span className="section-badge">Follow Us</span>
-              <h2 className="instagram-title">Follow Bellavierre<br />on Instagram</h2>
-            </div>
-            <a
-              href="https://www.instagram.com/bellavierrerealestate/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold instagram-follow-btn"
-              aria-label="Follow Bellavierre on Instagram"
-            >
-              <InstagramIcon size={16} />
-              @bellavierrerealestate
-            </a>
-          </div>
+  // return (
+    // <section className="instagram-section" aria-label="Instagram Feed">
+    //   <div className="instagram-inner">
+    //     <div className="instagram-panel">
+    //       {/* Header */}
+    //       <div className="instagram-header container">
+    //         <div className="instagram-header-left">
+    //           <span className="section-badge">Follow Us</span>
+    //           <h2 className="instagram-title">Follow Bellavierre<br />on Instagram</h2>
+    //         </div>
+    //         <a
+    //           href="https://www.instagram.com/bellavierrerealestate/"
+    //           target="_blank"
+    //           rel="noopener noreferrer"
+    //           className="btn-gold instagram-follow-btn"
+    //           aria-label="Follow Bellavierre on Instagram"
+    //         >
+    //           <InstagramIcon size={16} />
+    //           @bellavierrerealestate
+    //         </a>
+    //       </div>
 
-          {/* Scrollable Feed */}
-          <div
-            className="instagram-feed"
-            ref={scrollRef}
-            role="list"
-            aria-label="Instagram posts"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-          >
-            {instagramPosts.map((post) => (
-              <a
-                key={post.id}
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="instagram-card"
-                role="listitem"
-                aria-label={post.caption}
-              >
-                <img
-                  src={post.image}
-                  alt={post.caption}
-                  className="instagram-card-img"
-                  loading="lazy"
-                  draggable={false}
-                />
-                <div className="instagram-card-overlay">
-                  <div className="instagram-card-caption">{post.caption}</div>
-                  <ExternalLink size={16} className="instagram-card-icon" />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+    //       {/* Scrollable Feed */}
+    //       <div
+    //         className="instagram-feed"
+    //         ref={scrollRef}
+    //         role="list"
+    //         aria-label="Instagram posts"
+    //         onMouseDown={handleMouseDown}
+    //         onMouseMove={handleMouseMove}
+    //         onMouseUp={handleMouseUp}
+    //         onMouseLeave={handleMouseUp}
+    //       >
+    //         {instagramPosts.map((post) => (
+    //           <a
+    //             key={post.id}
+    //             href={post.link}
+    //             target="_blank"
+    //             rel="noopener noreferrer"
+    //             className="instagram-card"
+    //             role="listitem"
+    //             aria-label={post.caption}
+    //           >
+    //             <img
+    //               src={post.image}
+    //               alt={post.caption}
+    //               className="instagram-card-img"
+    //               loading="lazy"
+    //               draggable={false}
+    //             />
+    //             <div className="instagram-card-overlay">
+    //               <div className="instagram-card-caption">{post.caption}</div>
+    //               <ExternalLink size={16} className="instagram-card-icon" />
+    //             </div>
+    //           </a>
+    //         ))}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </section>
+  // )
 }
