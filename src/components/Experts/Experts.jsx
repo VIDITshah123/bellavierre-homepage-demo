@@ -108,7 +108,7 @@ export default function Experts() {
         {/* View All Experts CTA Button */}
         <div className="experts-cta-wrap">
           <a href="#contact" className="view-all-experts-btn" aria-label="View all expert agents">
-            <span className="btn-text">View All Expert Agents</span>
+            <span className="btn-text" style={{ color: 'black' }}>View All Expert Agents</span>
             <span className="btn-circle-arrow" aria-hidden="true">
               <ArrowUpRight size={14} strokeWidth={2.5} />
             </span>
