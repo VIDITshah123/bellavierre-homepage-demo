@@ -143,9 +143,9 @@
 }
 
 .testimonial-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  border-color: #d1d5db;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.1);
+  border-color: rgba(197, 168, 128, 0.45);
 }
 
 /* Stars */

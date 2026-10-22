@@ -1,6 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTilt } from '../../hooks/useTilt'
 import './Contact.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,6 +17,65 @@ export default function Contact() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const sectionRef = useRef(null)
+  const bgImageRef = useRef(null)
+  const formCardTiltRef = useTilt(6, 1.01)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    // Villa Image Parallax Scroll
+    if (bgImageRef.current && sectionRef.current) {
+      gsap.fromTo(
+        bgImageRef.current,
+        { yPercent: -15, scale: 1.08 },
+        {
+          yPercent: 15,
+          scale: 1.15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.5,
+          },
+        }
+      )
+    }
+
+    // Header & Form Stagger Entrance
+    const ctx = gsap.context(() => {
+      gsap.from('.contact-header > *', {
+        y: 35,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none',
+        },
+      })
+
+      gsap.from(formCardTiltRef.current, {
+        y: 50,
+        opacity: 0,
+        scale: 0.96,
+        duration: 1,
+        delay: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+          toggleActions: 'play none none none',
+        },
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [formCardTiltRef])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -27,7 +91,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="contact-section" aria-label="Contact Bellavierre Real Estate">
+    <section id="contact" className="contact-section" ref={sectionRef} aria-label="Contact Bellavierre Real Estate">
       <div className="contact-content-container">
         {/* Header Text */}
         <div className="contact-header text-center">
@@ -40,7 +104,7 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* Floating Glassmorphism Form Card */}
+        {/* Floating Glassmorphism Form Card with 3D Mouse Tilt */}
         <div className="contact-form-wrapper">
           {submitted ? (
             <div className="contact-form-card glass contact-success-card" role="status" aria-live="polite">
@@ -61,7 +125,12 @@ export default function Contact() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="contact-form-card glass" aria-label="Book a Call Form">
+            <form
+              ref={formCardTiltRef}
+              onSubmit={handleSubmit}
+              className="contact-form-card glass"
+              aria-label="Book a Call Form"
+            >
               <div className="contact-form-row">
                 <div className="contact-input-field">
                   <input
@@ -141,13 +210,14 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Background Villa Architecture with Top Fade Gradient */}
+      {/* Background Villa Architecture with True Parallax Scroll */}
       <div className="contact-bg-wrap" aria-hidden="true">
         <div className="contact-bg-gradient-top"></div>
         <img
+          ref={bgImageRef}
           src="https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6789e453099e81e883a098fd_minimalist-architecture-space-(7).jpg"
           alt="Modern luxury villa architectural backdrop"
-          className="contact-bg-image"
+          className="contact-bg-image parallax-villa"
           loading="lazy"
         />
       </div>

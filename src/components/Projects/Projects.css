@@ -233,6 +233,311 @@
   transform: translate(2px, -2px);
 }
 
+/* ── Filter Bar ── */
+.projects-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.projects-filter-btn {
+  background: #f3f4f6;
+  border: 1px solid transparent;
+  color: #4b5563;
+  padding: 0.55rem 1.35rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.projects-filter-btn:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.projects-filter-btn.active {
+  background: #111827;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.2);
+}
+
+/* ── Card 3D Tilt & Spotlight ── */
+.interactive-project-card {
+  cursor: pointer;
+  position: relative;
+  border-radius: 2rem;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.25s ease;
+}
+
+.property-card-spotlight {
+  position: absolute;
+  inset: -8px;
+  border-radius: 2.4rem;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 320px at var(--card-spotlight-x, 50%) var(--card-spotlight-y, 50%),
+    rgba(197, 168, 128, 0.22),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.interactive-project-card:hover .property-card-spotlight {
+  opacity: 1;
+}
+
+/* ── Quick View Overlay ── */
+.property-view-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  transition: opacity 0.25s ease;
+}
+
+.interactive-project-card:hover .property-view-overlay {
+  opacity: 1;
+}
+
+.quick-view-badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111827;
+  padding: 0.55rem 1.35rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transform: translateY(10px);
+  transition: transform 0.25s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.interactive-project-card:hover .quick-view-badge {
+  transform: translateY(0);
+}
+
+/* ── Quick-View Modal Styles ── */
+.property-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: modalFadeIn 0.25s ease;
+}
+
+.property-modal-card {
+  background: #ffffff;
+  border-radius: 2rem;
+  max-width: 960px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3);
+  padding: 2.25rem;
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(30px) scale(0.96); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4b5563;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: #111827;
+  color: #ffffff;
+}
+
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.modal-image-col {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 420px;
+}
+
+.modal-property-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-category-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #ffffff;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.modal-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.modal-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: #6b7280;
+}
+
+.modal-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.modal-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #c5a880;
+}
+
+.modal-specs-bar {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-spec {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.modal-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #f9fafb;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+.highlight-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.highlight-icon {
+  color: #c5a880;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.modal-cta-primary {
+  flex: 1;
+  background: #111827;
+  color: #ffffff;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.modal-cta-primary:hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+.modal-cta-secondary {
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.modal-cta-secondary:hover {
+  border-color: #111827;
+  color: #111827;
+}
+
 /* ── Responsive ── */
 @media (max-width: 991px) {
   .properties-grid {
@@ -242,6 +547,19 @@
   .property-image-box {
     height: 300px;
     border-radius: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .modal-image-col {
+    height: 240px;
+  }
+  .property-modal-card {
+    padding: 1.5rem;
   }
 }
 

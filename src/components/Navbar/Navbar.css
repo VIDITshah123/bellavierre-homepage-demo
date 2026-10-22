@@ -15,7 +15,11 @@
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-header.is-hidden {
+  transform: translateY(-100%);
 }
 
 .navbar-header.is-scrolled {
@@ -79,6 +83,23 @@
 .nav-link:hover,
 .nav-link.active {
   color: #111827;
+}
+
+.nav-active-pill {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2.5px;
+  background-color: #111827;
+  border-radius: 999px;
+  animation: activePillPop 0.25s ease;
+}
+
+@keyframes activePillPop {
+  from { width: 0; opacity: 0; }
+  to { width: 16px; opacity: 1; }
 }
 
 /* ── Actions & CTA Button ── */

@@ -55,7 +55,7 @@
   gap: 1.75rem;
 }
 
-/* ── Individual Card ── */
+/* ── Individual Card with 3D Tilt ── */
 .why-choose-card {
   background-color: #f4f5f7;
   border-radius: 2rem;
@@ -63,13 +63,37 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.25s ease, background-color 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.card-spotlight-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 260px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(255, 255, 255, 0.65),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.interactive-tilt-card:hover .card-spotlight-glare {
+  opacity: 1;
 }
 
 .why-choose-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
-  background-color: #eff1f5;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 /* Circular White Icon Box */

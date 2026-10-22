@@ -11,10 +11,18 @@ import InstagramFeed from './components/Instagram/Instagram'
 import Faq from './components/Faq/Faq'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
+import ScrollProgress from './components/ScrollProgress/ScrollProgress'
+import CustomCursor from './components/Cursor/CustomCursor'
+import useSmoothScroll from './hooks/useSmoothScroll'
 
 export default function App() {
+  // Initialize Lenis smooth scroll synchronized with GSAP ScrollTrigger
+  useSmoothScroll()
+
   return (
     <>
+      <CustomCursor />
+      <ScrollProgress />
       <Navbar />
       <main id="main-content" role="main">
         <Hero />

@@ -1,6 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { ArrowUpRight, Star } from 'lucide-react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Hero.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
   { value: 5.77, prefix: 'AED ', suffix: 'M+', label: 'Top Deal Closed' },
@@ -17,12 +21,87 @@ const agentAvatars = [
 
 export default function Hero() {
   const sectionRef = useRef(null)
+  const bgImageRef = useRef(null)
+  const contentRef = useRef(null)
+  const ratingRef = useRef(null)
   const counterRefs = useRef([])
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) return
 
+    // 1. Parallax Scroll Effect on Hero Background Image
+    if (bgImageRef.current && sectionRef.current) {
+      gsap.to(bgImageRef.current, {
+        yPercent: 20,
+        scale: 1.08,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+    }
+
+    // 2. Parallax fade & upward motion on Hero Content
+    if (contentRef.current && sectionRef.current) {
+      gsap.to(contentRef.current, {
+        y: -60,
+        opacity: 0.85,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+    }
+
+    // 3. Staggered Entrance Animation
+    const ctx = gsap.context(() => {
+      gsap.from('.hero-heading-line', {
+        y: 40,
+        opacity: 0,
+        duration: 1.1,
+        stagger: 0.15,
+        ease: 'power3.out',
+      })
+      gsap.from('.hero-description', {
+        y: 25,
+        opacity: 0,
+        duration: 1,
+        delay: 0.4,
+        ease: 'power3.out',
+      })
+      gsap.from('.hero-action-btn', {
+        y: 20,
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.9,
+        delay: 0.6,
+        ease: 'power3.out',
+      })
+      gsap.from('.achieve-list', {
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.9,
+        delay: 0.7,
+        ease: 'power3.out',
+      })
+      gsap.from('.hero-rating-grid', {
+        scale: 0.85,
+        opacity: 0,
+        duration: 1.1,
+        delay: 0.8,
+        ease: 'back.out(1.5)',
+      })
+    }, sectionRef)
+
+    // 4. Counter number counting animation
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,7 +114,39 @@ export default function Hero() {
       { threshold: 0.2 }
     )
     if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
+
+    // 5. Interactive 3D Mouse Parallax on Hero Card
+    const card = sectionRef.current
+    const handleMouseMove = (e) => {
+      const rect = card.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width - 0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5
+
+      if (bgImageRef.current) {
+        gsap.to(bgImageRef.current, {
+          x: x * 25,
+          y: y * 25,
+          duration: 0.8,
+          ease: 'power2.out',
+        })
+      }
+      if (ratingRef.current) {
+        gsap.to(ratingRef.current, {
+          x: -x * 15,
+          y: -y * 15,
+          duration: 0.8,
+          ease: 'power2.out',
+        })
+      }
+    }
+
+    card.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      ctx.revert()
+      observer.disconnect()
+      card.removeEventListener('mousemove', handleMouseMove)
+    }
   }, [])
 
   const animateCounters = () => {
@@ -43,7 +154,7 @@ export default function Hero() {
       if (!el) return
       const stat = stats[i]
       const end = stat.value
-      const duration = 1400
+      const duration = 1600
       const start = Date.now()
       const isDecimal = end % 1 !== 0
 
@@ -64,11 +175,24 @@ export default function Hero() {
   return (
     <section id="hero" className="hero-section" ref={sectionRef} aria-label="Hero">
       <div className="hero-bg-wrap">
+        {/* Parallax Background Image Container */}
+        <div className="hero-bg-image-wrapper" aria-hidden="true">
+          <img
+            ref={bgImageRef}
+            src="https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6784958c2c4ad0bc028ac10a_hero-bg-v4.jpg"
+            alt="Dubai Luxury Architecture Skyline"
+            className="hero-parallax-bg-img"
+            loading="eager"
+          />
+          <div className="hero-bg-overlay" />
+          <div className="hero-ambient-glow" />
+        </div>
+
         {/* Top/Main Content */}
-        <div className="hero-content">
+        <div className="hero-content" ref={contentRef}>
           <h1 className="hero-heading">
-            YOUR DUBAI PROPERTY TEAM,<br />
-            ON THE GROUND FOR YOU
+            <span className="hero-heading-line">YOUR DUBAI PROPERTY TEAM,</span><br />
+            <span className="hero-heading-line">ON THE GROUND FOR YOU</span>
           </h1>
 
           <div className="hero-description">
@@ -102,8 +226,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom Right Corner Cutout Dock */}
-        <div className="hero-rating-grid" aria-label="Customer ratings and featured agents">
+        {/* Bottom Right Corner Cutout Dock with floating parallax */}
+        <div className="hero-rating-grid" ref={ratingRef} aria-label="Customer ratings and featured agents">
           {/* Row 1, Col 1: Empty */}
           <div className="hero-rating-grid-item" />
 

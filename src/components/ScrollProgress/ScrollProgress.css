@@ -1,0 +1,99 @@
+/* Top Scroll Progress Line */
+.scroll-progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: transparent;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.scroll-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c5a880 0%, #111827 50%, #d4af37 100%);
+  transition: width 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
+  box-shadow: 0 0 10px rgba(197, 168, 128, 0.5);
+}
+
+/* Floating Radial Back-to-Top Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 900;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+  padding: 0;
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.back-to-top-btn:hover {
+  background-color: #ffffff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.18);
+}
+
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.progress-ring-indicator {
+  transition: stroke-dashoffset 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+.back-to-top-icon {
+  position: relative;
+  z-index: 2;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.back-to-top-btn:hover .back-to-top-icon {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .back-to-top-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  .progress-ring {
+    width: 42px;
+    height: 42px;
+    viewBox: 0 0 42 42;
+  }
+}

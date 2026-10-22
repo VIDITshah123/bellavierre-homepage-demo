@@ -1,5 +1,10 @@
+import { useEffect, useRef } from 'react'
 import { Eye, Users, Hand } from 'lucide-react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './About.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const statsData = [
   { value: '200', suffix: '+', label: 'Projects Complete' },
@@ -31,8 +36,62 @@ const partnersRow2 = [
 ]
 
 export default function About() {
+  const sectionRef = useRef(null)
+  const teamImgRef = useRef(null)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    // Parallax on Middle Team Image
+    if (teamImgRef.current && sectionRef.current) {
+      gsap.fromTo(
+        teamImgRef.current,
+        { yPercent: -12, scale: 1.05 },
+        {
+          yPercent: 12,
+          scale: 1.12,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.5,
+          },
+        }
+      )
+    }
+
+    // Stagger Reveal on Pillars & Stats
+    const ctx = gsap.context(() => {
+      gsap.from('.about-col-left', {
+        x: -40,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+      })
+
+      gsap.from('.about-feature-item', {
+        x: 40,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section id="about" className="about-section" aria-label="About Bellavierre Real Estate">
+    <section id="about" className="about-section" ref={sectionRef} aria-label="About Bellavierre Real Estate">
       <div className="about-container">
         {/* Top: 3-Column Layout */}
         <div className="about-three-columns">
@@ -53,7 +112,7 @@ export default function About() {
                 Our journey is defined by on-the-ground market expertise, rigorous developer due diligence, and an unwavering commitment to client satisfaction.
               </p>
 
-              {/* 2x2 Stats Grid */}
+              {/* 2x2 Stats Grid with Interactive Hover */}
               <div className="about-stats-grid">
                 {statsData.map((stat, i) => (
                   <div key={i} className="about-stat-item">
@@ -70,19 +129,20 @@ export default function About() {
             </div>
           </div>
 
-          {/* Middle Column: Team Image */}
+          {/* Middle Column: Team Image with Parallax */}
           <div className="about-col about-col-middle">
             <div className="about-image-card">
               <img
+                ref={teamImgRef}
                 src="https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6788a87b1d5db7654ca7e7cd_group-confident-businesspeople-office.jpg"
                 alt="Bellavierre Real Estate Team in Dubai"
-                className="about-team-img"
+                className="about-team-img parallax-team-img"
                 loading="lazy"
               />
             </div>
           </div>
 
-          {/* Right Column: 3 Pillars (Our Vision, Expert Team, Tailored Solutions) */}
+          {/* Right Column: 3 Pillars with 3D Tilt */}
           <div className="about-col about-col-right">
             {/* Feature 1: Our Vision */}
             <div className="about-feature-item">
@@ -125,26 +185,30 @@ export default function About() {
           </div>
         </div>
 
-        {/* Bottom: Partners & Clients Logos */}
+        {/* Bottom: Partners & Clients Logos with Infinite Scroll Marquee */}
         <div className="about-partners-wrap">
           <h3 className="partners-title">Check Our Best Clients &amp; Partners</h3>
 
-          {/* Row 1 */}
-          <div className="partners-row">
-            {partnersRow1.map((logo, idx) => (
-              <div key={idx} className="partner-logo-item">
-                <img src={logo} alt={`Partner ${idx + 1}`} className="partner-logo-img" loading="lazy" />
-              </div>
-            ))}
+          {/* Row 1 — Moving Left */}
+          <div className="partners-marquee-container">
+            <div className="partners-marquee-track move-left">
+              {[...partnersRow1, ...partnersRow1].map((logo, idx) => (
+                <div key={idx} className="partner-logo-item">
+                  <img src={logo} alt="Partner Logo" className="partner-logo-img" loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Row 2 */}
-          <div className="partners-row">
-            {partnersRow2.map((logo, idx) => (
-              <div key={idx} className="partner-logo-item">
-                <img src={logo} alt={`Partner ${idx + 9}`} className="partner-logo-img" loading="lazy" />
-              </div>
-            ))}
+          {/* Row 2 — Moving Right */}
+          <div className="partners-marquee-container">
+            <div className="partners-marquee-track move-right">
+              {[...partnersRow2, ...partnersRow2].map((logo, idx) => (
+                <div key={idx} className="partner-logo-item">
+                  <img src={logo} alt="Partner Logo" className="partner-logo-img" loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
