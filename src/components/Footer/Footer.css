@@ -1,0 +1,215 @@
+/* Footer Section — Pixel-perfect recreation of VistaHaven Dark Luxury Footer */
+.footer-section {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 5rem 4rem 3rem;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Top Part */
+.footer-wrap-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 3.5rem;
+}
+
+/* Left Column */
+.footer-wrap-left {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.footer-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-brand-logo:hover {
+  opacity: 0.9;
+}
+
+.footer-brand-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-brand-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.footer-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-contact-link {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-contact-link:hover {
+  color: #ffffff;
+}
+
+.footer-address {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 360px;
+}
+
+/* Social media icon buttons */
+.footer-social-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.footer-social-circle {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer-social-circle:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Right Column */
+.footer-wrap-right {
+  width: 48%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 6rem;
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-col-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.35rem 0;
+  letter-spacing: -0.01em;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-nav-link {
+  color: #9ca3af;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-nav-link:hover {
+  color: #ffffff;
+}
+
+/* Bottom Part */
+.footer-wrap-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2.5rem;
+  font-size: 0.88rem;
+  color: #9ca3af;
+}
+
+.footer-copyright {
+  margin: 0;
+}
+
+.footer-copyright-link {
+  color: #d1d5db;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.footer-copyright-link:hover {
+  color: #ffffff;
+}
+
+.footer-powered {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .footer-section {
+    padding: 4rem 2rem 2.5rem;
+  }
+
+  .footer-wrap-top {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .footer-wrap-left,
+  .footer-wrap-right {
+    width: 100%;
+  }
+
+  .footer-wrap-right {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-section {
+    padding: 3.5rem 1.25rem 2rem;
+  }
+
+  .footer-wrap-right {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .footer-wrap-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+}

@@ -1,0 +1,209 @@
+/* ─────────────────────────────────────────
+   EXPERTS / AGENTS SECTION (VISTAHAVEN & BELLAVIERRE)
+   Continuous Left-to-Right Moving Track
+   ───────────────────────────────────────── */
+
+.experts-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: clamp(60px, 8vw, 100px) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.experts-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Section Header ── */
+.experts-header {
+  text-align: center;
+  max-width: 800px;
+  padding: 0 24px;
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+
+.experts-pill-badge {
+  display: inline-block;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 5px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+}
+
+.experts-main-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ── Continuous Left-to-Right Marquee ── */
+.experts-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.experts-marquee-track {
+  display: flex;
+  gap: clamp(20px, 2.5vw, 32px);
+  width: max-content;
+  animation: marqueeLeftToRight 36s linear infinite;
+  will-change: transform;
+}
+
+.experts-marquee-container:hover .experts-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Keyframe for left to right: moves from -50% to 0% */
+@keyframes marqueeLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* ── Expert Card ── */
+.expert-card {
+  width: clamp(220px, 18vw, 270px);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.expert-card:hover {
+  transform: translateY(-6px);
+}
+
+.expert-image-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: clamp(20px, 2.2vw, 28px);
+  overflow: hidden;
+  background-color: #f3f4f6;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.expert-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.expert-card:hover .expert-img {
+  transform: scale(1.05);
+}
+
+.expert-info {
+  margin-top: 14px;
+  text-align: left;
+}
+
+.expert-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+  margin: 0 0 3px 0;
+}
+
+.expert-role {
+  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── CTA Button ── */
+.experts-cta-wrap {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: flex;
+  justify-content: center;
+}
+
+.view-all-experts-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #111827;
+  padding: 6px 8px 6px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.25s ease;
+}
+
+.view-all-experts-btn:hover {
+  background-color: #111827;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.view-all-experts-btn .btn-circle-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #111827;
+  color: #ffffff;
+  transition: background-color 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.view-all-experts-btn:hover .btn-circle-arrow {
+  background-color: #ffffff;
+  color: #111827;
+  transform: translate(2px, -2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .expert-card {
+    width: 210px;
+  }
+  .experts-marquee-track {
+    animation-duration: 26s;
+  }
+}

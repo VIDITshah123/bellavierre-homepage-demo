@@ -1,0 +1,393 @@
+/* ─────────────────────────────────────────
+   VISTAHAVEN STYLE INTERACTIVE SERVICES (BELLAVIERRE)
+   ───────────────────────────────────────── */
+
+.feature-service-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: clamp(64px, 8vw, 110px) clamp(20px, 4vw, 64px);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-service-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Header ── */
+.feature-service-header {
+  margin-bottom: clamp(40px, 5vw, 64px);
+  max-width: 720px;
+}
+
+.service-pill-badge {
+  display: inline-block;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 5px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 14px;
+}
+
+.service-main-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px 0;
+}
+
+.service-subtext {
+  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ── Wrap Layout ── */
+.feature-service-wrap {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(32px, 4vw, 60px);
+  width: 100%;
+}
+
+/* ── Left Column: Active Service Details ── */
+.feature-service-left {
+  width: 32%;
+  min-width: 280px;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.feature-service-info-box {
+  animation: serviceFadeIn 0.35s ease-out both;
+}
+
+@keyframes serviceFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-icon-wrap {
+  margin-bottom: 20px;
+  color: #111827;
+  display: flex;
+  align-items: center;
+}
+
+.service-lucide-icon {
+  stroke-width: 1.8;
+  color: #111827;
+}
+
+.service-info-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.4rem, 1.8vw, 1.75rem);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.015em;
+}
+
+.service-info-desc {
+  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ── Right Column: Interactive Horizontal Accordion ── */
+.feature-service-right {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  height: 500px;
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+/* Pane Base */
+.feature-service-pane {
+  position: relative;
+  height: 100%;
+  transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+/* ── Collapsed Vertical Tab Spine ── */
+.feature-service-pane.is-collapsed {
+  flex: 0 0 74px;
+  width: 74px;
+  cursor: pointer;
+}
+
+.service-vertical-spine {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0 40px 0;
+  border-right: 1px solid #e5e7eb;
+  border-left: 1px solid #e5e7eb;
+  position: relative;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.feature-service-pane.is-collapsed:hover .service-vertical-spine {
+  background-color: #f9fafb;
+}
+
+/* Top Arrow */
+.service-spine-arrow {
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.arrow-rotate-up {
+  transform: rotate(-45deg);
+}
+
+.feature-service-pane.is-collapsed:hover .service-spine-arrow {
+  color: #111827;
+  transform: scale(1.15);
+}
+
+/* Rotated Vertical Title */
+.service-vertical-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  transform-origin: center center;
+  margin-bottom: 140px;
+}
+
+.spine-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #9ca3af;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+
+.spine-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.feature-service-pane.is-collapsed:hover .spine-number,
+.feature-service-pane.is-collapsed:hover .spine-title {
+  color: #111827;
+}
+
+/* ── Active Expanded Card ── */
+.feature-service-pane.is-active {
+  flex: 1 1 auto;
+  height: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+  cursor: default;
+}
+
+.service-active-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.service-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: serviceImgScale 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes serviceImgScale {
+  from {
+    transform: scale(1.06);
+    opacity: 0.85;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Bottom-Right Corner Cutout Dock ── */
+.service-corner-dock {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  pointer-events: none;
+}
+
+/* Top-Right Inverted Corner */
+.service-corner-top-right {
+  grid-column: 2;
+  grid-row: 1;
+  width: 36px;
+  height: 36px;
+  justify-self: end;
+  transform: rotate(180deg);
+  display: block;
+  line-height: 0;
+}
+
+.service-corner-top-right svg,
+.service-corner-bottom-left svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Bottom-Left Inverted Corner */
+.service-corner-bottom-left {
+  grid-column: 1;
+  grid-row: 2;
+  width: 36px;
+  height: 36px;
+  align-self: end;
+  transform: rotate(180deg);
+  display: block;
+  line-height: 0;
+}
+
+/* White Badge Box */
+.service-badge-content {
+  grid-column: 2;
+  grid-row: 2;
+  background-color: #ffffff;
+  border-top-left-radius: 2rem;
+  padding: 1.1rem 2rem 1.1rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: -4px -4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.service-badge-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.service-badge-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111827;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .feature-service-wrap {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .feature-service-left {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 0;
+  }
+  .feature-service-right {
+    height: 440px;
+  }
+  .feature-service-pane.is-collapsed {
+    flex: 0 0 60px;
+    width: 60px;
+  }
+  .spine-number {
+    font-size: 1.8rem;
+  }
+  .spine-title {
+    font-size: 12px;
+  }
+  .service-badge-num {
+    font-size: 2.2rem;
+  }
+  .service-badge-title {
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-service-section {
+    padding: 48px 16px;
+  }
+  .feature-service-right {
+    height: 380px;
+  }
+  .feature-service-pane.is-collapsed {
+    flex: 0 0 50px;
+    width: 50px;
+  }
+  .service-vertical-text {
+    margin-bottom: 100px;
+  }
+  .spine-number {
+    font-size: 1.5rem;
+  }
+  .spine-title {
+    font-size: 11px;
+  }
+  .service-badge-content {
+    padding: 0.85rem 1.25rem;
+  }
+  .service-badge-num {
+    font-size: 1.8rem;
+  }
+  .service-badge-title {
+    font-size: 11.5px;
+  }
+}

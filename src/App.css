@@ -1,0 +1,25 @@
+/* App-level layout */
+#main-content {
+  position: relative;
+}
+
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Custom scrollbar for the page */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-primary); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-gold-deep), var(--color-gold));
+  border-radius: 99px;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(255,227,142,0.25);
+  color: #fff;
+}
