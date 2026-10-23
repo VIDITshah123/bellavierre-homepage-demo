@@ -237,9 +237,12 @@
 }
 
 .service-card-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   display: block;
   animation: serviceImgScale 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -464,34 +467,41 @@
   .feature-service-pane.is-active {
     display: block !important;
     width: 100% !important;
-    height: 100% !important;
+    height: 270px !important;
+    min-height: 270px !important;
+    max-height: 270px !important;
     border-radius: 1.5rem !important;
     overflow: hidden !important;
     position: relative !important;
   }
 
   .service-active-card {
+    position: absolute !important;
+    inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    position: relative !important;
     border-radius: 1.5rem !important;
     overflow: hidden !important;
   }
 
   .service-card-img {
+    position: absolute !important;
+    inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center !important;
+    object-position: center 30% !important;
     display: block !important;
   }
 
   /* Responsive bottom-right corner dock */
   .service-corner-dock {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 5;
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    z-index: 10 !important;
+    display: grid !important;
+    pointer-events: none !important;
   }
 
   .service-corner-top-right,
@@ -501,23 +511,24 @@
   }
 
   .service-badge-content {
-    padding: 0.65rem 1.1rem !important;
+    padding: 0.6rem 1rem !important;
     border-top-left-radius: 1.5rem !important;
-    max-width: 180px !important;
-    box-shadow: -4px -4px 14px rgba(0, 0, 0, 0.06) !important;
+    max-width: 195px !important;
+    box-shadow: -4px -4px 14px rgba(0, 0, 0, 0.08) !important;
   }
 
   .service-badge-num {
-    font-size: 1.7rem !important;
+    font-size: 1.65rem !important;
     font-weight: 800 !important;
     line-height: 1 !important;
   }
 
   .service-badge-title {
-    font-size: 11px !important;
+    font-size: 10.5px !important;
     font-weight: 700 !important;
     white-space: normal !important;
-    line-height: 1.25 !important;
+    line-height: 1.2 !important;
     margin-top: 2px !important;
+    max-width: 175px !important;
   }
 }
