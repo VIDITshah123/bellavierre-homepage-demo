@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ArrowLeft, ArrowRight, Compass, Building2, TrendingUp, ShieldCheck } from 'lucide-react'
 import './Services.css'
 
@@ -59,12 +59,62 @@ const servicesData = [
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(1) // Default to 02
+  const hoverTimerRef = useRef(null)
+  const lastSwitchTimeRef = useRef(0)
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimerRef.current) {
+        clearTimeout(hoverTimerRef.current)
+      }
+    }
+  }, [])
+
+  const selectService = (index, immediate = false) => {
+    if (index === activeIndex) return
+
+    const now = Date.now()
+    // Anti-flicker lock: if an accordion transition recently started (< 260ms),
+    // ignore edge-sweep crossing events to prevent boundary oscillation
+    if (!immediate && now - lastSwitchTimeRef.current < 260) {
+      return
+    }
+
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current)
+      hoverTimerRef.current = null
+    }
+
+    if (immediate) {
+      lastSwitchTimeRef.current = now
+      setActiveIndex(index)
+    } else {
+      // 90ms intent delay: ensures the user deliberately paused/hovered on this tile,
+      // completely eliminating jitter when the cursor brushes past an edge
+      hoverTimerRef.current = setTimeout(() => {
+        lastSwitchTimeRef.current = Date.now()
+        setActiveIndex(index)
+      }, 90)
+    }
+  }
+
+  const handleMouseEnter = (index) => {
+    selectService(index, false)
+  }
+
+  const handleMouseLeave = () => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current)
+      hoverTimerRef.current = null
+    }
+  }
 
   const currentService = servicesData[activeIndex]
   const ActiveIcon = currentService.icon
 
   return (
     <section id="services" className="feature-service-section" aria-label="Our Services">
+      <span id="service" className="service-anchor-alias" aria-hidden="true" />
       <div className="feature-service-container">
         {/* Header */}
         <div className="feature-service-header">
@@ -100,7 +150,7 @@ export default function Services() {
                   key={service.id}
                   type="button"
                   className={`service-mobile-tab-btn ${isActive ? 'is-active' : ''}`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => selectService(index, true)}
                   role="tab"
                   aria-selected={isActive}
                 >
@@ -112,7 +162,11 @@ export default function Services() {
           </div>
 
           {/* Right Column: Interactive Horizontal Accordion */}
-          <div className="feature-service-right" role="tablist">
+          <div
+            className="feature-service-right"
+            role="tablist"
+            onMouseLeave={handleMouseLeave}
+          >
             {servicesData.map((service, index) => {
               const isActive = activeIndex === index
               const isToLeft = index < activeIndex
@@ -121,70 +175,68 @@ export default function Services() {
                 <div
                   key={service.id}
                   className={`feature-service-pane ${isActive ? 'is-active' : 'is-collapsed'}`}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onClick={() => setActiveIndex(index)}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onClick={() => selectService(index, true)}
                   role="tab"
                   aria-selected={isActive}
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault()
-                      setActiveIndex(index)
+                      selectService(index, true)
                     }
                   }}
                 >
-                  {/* When Active: Expanded Image Card */}
-                  {isActive ? (
-                    <div className="service-active-card">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="service-card-img"
-                        loading="lazy"
-                      />
+                  {/* Expanded Image Card */}
+                  <div className="service-active-card" aria-hidden={!isActive}>
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="service-card-img"
+                      loading="eager"
+                    />
 
-                      {/* Bottom-Right Corner Cutout Dock */}
-                      <div className="service-corner-dock" aria-hidden="true">
-                        {/* Top-Right Inverted Corner Fillet */}
-                        <div className="service-corner-top-right">
-                          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 0L0 20C0 8.95431 8.95431 0 20 0L0 0Z" fill="white" />
-                          </svg>
-                        </div>
+                    {/* Bottom-Right Corner Cutout Dock */}
+                    <div className="service-corner-dock" aria-hidden="true">
+                      {/* Top-Right Inverted Corner Fillet */}
+                      <div className="service-corner-top-right">
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 0L0 20C0 8.95431 8.95431 0 20 0L0 0Z" fill="white" />
+                        </svg>
+                      </div>
 
-                        {/* Bottom-Left Inverted Corner Fillet */}
-                        <div className="service-corner-bottom-left">
-                          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 0L0 20C0 8.95431 8.95431 0 20 0L0 0Z" fill="white" />
-                          </svg>
-                        </div>
+                      {/* Bottom-Left Inverted Corner Fillet */}
+                      <div className="service-corner-bottom-left">
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 0L0 20C0 8.95431 8.95431 0 20 0L0 0Z" fill="white" />
+                        </svg>
+                      </div>
 
-                        {/* White Badge Content */}
-                        <div className="service-badge-content">
-                          <div className="service-badge-num">{service.badgeNumber}</div>
-                          <div className="service-badge-title">{service.badgeTitle}</div>
-                        </div>
+                      {/* White Badge Content */}
+                      <div className="service-badge-content">
+                        <div className="service-badge-num">{service.badgeNumber}</div>
+                        <div className="service-badge-title">{service.badgeTitle}</div>
                       </div>
                     </div>
-                  ) : (
-                    /* When Collapsed: Vertical Tab Spine */
-                    <div className="service-vertical-spine">
-                      {/* Direction Arrow */}
-                      <div className="service-spine-arrow" aria-hidden="true">
-                        {isToLeft ? (
-                          <ArrowLeft size={16} strokeWidth={2} />
-                        ) : (
-                          <ArrowRight size={16} strokeWidth={2} className="arrow-rotate-up" />
-                        )}
-                      </div>
+                  </div>
 
-                      {/* Rotated Vertical Title */}
-                      <div className="service-vertical-text">
-                        <span className="spine-number">{service.tabNumber}</span>
-                        <span className="spine-title">{service.tabTitle}</span>
-                      </div>
+                  {/* Collapsed Vertical Tab Spine */}
+                  <div className="service-vertical-spine" aria-hidden={isActive}>
+                    {/* Direction Arrow */}
+                    <div className="service-spine-arrow" aria-hidden="true">
+                      {isToLeft ? (
+                        <ArrowLeft size={16} strokeWidth={2} />
+                      ) : (
+                        <ArrowRight size={16} strokeWidth={2} className="arrow-rotate-up" />
+                      )}
                     </div>
-                  )}
+
+                    {/* Rotated Vertical Title */}
+                    <div className="service-vertical-text">
+                      <span className="spine-number">{service.tabNumber}</span>
+                      <span className="spine-title">{service.tabTitle}</span>
+                    </div>
+                  </div>
                 </div>
               )
             })}

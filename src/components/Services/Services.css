@@ -129,13 +129,29 @@
   overflow: hidden;
 }
 
+.service-anchor-alias {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 /* Pane Base */
 .feature-service-pane {
   position: relative;
   height: 100%;
-  transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: flex 0.46s cubic-bezier(0.2, 0, 0, 1),
+              width 0.46s cubic-bezier(0.2, 0, 0, 1);
   outline: none;
+  overflow: hidden;
+  will-change: flex;
+  transform: translateZ(0);
+  border-right: 1px solid rgba(229, 231, 235, 0.85);
+}
+
+.feature-service-pane:first-child {
+  border-left: 1px solid rgba(229, 231, 235, 0.85);
 }
 
 /* ── Collapsed Vertical Tab Spine ── */
@@ -153,12 +169,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px 0 40px 0;
-  border-right: 1px solid #e5e7eb;
-  border-left: 1px solid #e5e7eb;
   position: relative;
   background-color: #ffffff;
-  transition: background-color 0.2s ease;
+  transition: opacity 0.25s ease, background-color 0.2s ease, visibility 0.25s ease;
   user-select: none;
+  opacity: 1;
+  visibility: visible;
+}
+
+.feature-service-pane.is-active .service-vertical-spine {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
 }
 
 .feature-service-pane.is-collapsed:hover .service-vertical-spine {
@@ -226,14 +250,26 @@
   border-radius: 2rem;
   overflow: hidden;
   cursor: default;
+  border-right: none;
 }
 
 .service-active-card {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   border-radius: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.32s ease;
+}
+
+.feature-service-pane.is-active .service-active-card {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .service-card-img {
@@ -244,18 +280,12 @@
   object-fit: cover;
   object-position: center 30%;
   display: block;
-  animation: serviceImgScale 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform: scale(1.03);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes serviceImgScale {
-  from {
-    transform: scale(1.06);
-    opacity: 0.85;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+.feature-service-pane.is-active .service-card-img {
+  transform: scale(1);
 }
 
 /* ── Bottom-Right Corner Cutout Dock ── */
@@ -483,6 +513,13 @@
     height: 100% !important;
     border-radius: 1.5rem !important;
     overflow: hidden !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .service-vertical-spine {
+    display: none !important;
   }
 
   .service-card-img {
