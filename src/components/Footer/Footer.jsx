@@ -14,7 +14,6 @@ export default function Footer() {
                 alt="Bellavierre Real Estate LLC"
                 className="footer-brand-img"
               />
-              <span className="footer-brand-name">BELLAVIERRE</span>
             </a>
 
             <div className="footer-contact-details">
