@@ -47,7 +47,7 @@
   color: #111827;
   text-transform: uppercase;
   line-height: 1.15;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.024em;
   margin: 0 0 20px 0;
 }
 
@@ -182,7 +182,7 @@
   font-size: 15px;
   font-weight: 700;
   color: #111827;
-  letter-spacing: 0.015em;
+  letter-spacing: -0.015em;
   margin: 0;
 }
 
@@ -199,6 +199,7 @@
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.65;
+  letter-spacing: -0.012em;
   color: #4b5563;
   margin: 0;
 }

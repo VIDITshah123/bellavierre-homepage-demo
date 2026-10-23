@@ -52,7 +52,7 @@
   color: #111827;
   text-transform: uppercase;
   line-height: 1.12;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.025em;
   margin: 0 0 16px 0;
 }
 
@@ -232,7 +232,7 @@
   font-size: clamp(1.8rem, 2.5vw, 2.35rem);
   font-weight: 700;
   color: #111827;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
 }
 
 .roi-live-value-sub {
@@ -623,7 +623,7 @@
   font-size: 1.85rem;
   font-weight: 700;
   color: #111827;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 

@@ -18,10 +18,11 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   overflow-x: hidden;
-  line-height: 1.68;
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.012em;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.012em;
 }
 
 img, video { max-width: 100%; display: block; }
@@ -32,12 +33,19 @@ input, select, textarea { font-family: inherit; }
 
 /* ── Design Tokens ── */
 :root {
-  /* Typography Families — Ultra Luxury Dubai Real Estate */
-  --font-display: 'Cormorant Garamond', 'Cinzel', 'Playfair Display', Georgia, serif;
-  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Lato', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-accent: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  /* Typography Families — Ultra-Luxury Modern Tech & Developer Aesthetic */
+  /* 1. Main Branding / Logo: Bold laterally compressed/condensed sans-serif in all caps (HOMVIX aesthetic) */
+  --font-brand: 'Oswald', 'Bebas Neue', -apple-system, BlinkMacSystemFont, 'Arial Narrow', sans-serif;
+
+  /* 2. Primary Display Headers: 'Geist' clean, geometric, spacious, and highly professional */
+  --font-display: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* 3. Body Text & Paragraphs: Modern Neo-Grotesque ('Geist' / 'Inter') with tight letter spacing */
+  --font-body: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', Consolas, Monaco, monospace;
 
   /* Colors */
   --color-bg-primary:    #05070a;
@@ -107,37 +115,89 @@ input, select, textarea { font-family: inherit; }
   --t-slow:   600ms;
 }
 
-/* ── Global Ultra Luxury Typography Foundation ── */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0.02em;
+/* ── Rule 1: Main Branding & Logo Elements (HOMVIX Bold Laterally Compressed Sans in All Caps) ── */
+.brand-logo,
+.brand-logo-text,
+.brand-title,
+.brand-name,
+.brand-mark,
+.logo-text,
+.footer-brand-logo,
+.footer-copyright-link,
+[class*="brand-logo"],
+[class*="brand-title"],
+[class*="brand-mark"] {
+  font-family: var(--font-brand);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
-p, li, input, select, textarea {
-  font-family: var(--font-body);
-}
-
+/* ── Rule 2: Primary Display Headers ('Geist' Geometric, Clean, Spacious, Highly Professional) ── */
+h1, h2, h3, h4, h5, h6,
 .hero-heading,
 [class*="-heading"],
 [class*="-title"],
-.section-title {
+.section-title,
+.display-header,
+.header-large,
+.header-primary {
   font-family: var(--font-display);
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+}
+
+h1,
+.hero-heading,
+.display-header,
+.header-large {
+  letter-spacing: -0.028em;
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+h2,
+.section-title {
+  letter-spacing: -0.022em;
+  line-height: 1.16;
+  font-weight: 700;
+}
+
+h3,
+[class*="-subtitle"] {
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+/* ── Rule 3: Body Text & Paragraphs (Modern Neo-Grotesque 'Geist' / 'Inter' with Tight Letter Spacing) ── */
+p, li, input, select, textarea, span, label, a {
+  font-family: var(--font-body);
+}
+
+p,
+.body-text,
+[class*="-description"],
+[class*="-desc"] {
+  letter-spacing: -0.012em;
+  line-height: 1.62;
 }
 
 [class*="-stat-num"],
 [class*="-price-val"],
 [class*="-roi-val"],
-.stat-number {
+.stat-number,
+.achieve-number {
   font-family: var(--font-display);
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 blockquote,
 [class*="-quote"] {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-style: normal;
+  letter-spacing: -0.014em;
 }
 
 /* ── Layout Utilities ── */

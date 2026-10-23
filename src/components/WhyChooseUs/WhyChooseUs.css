@@ -44,7 +44,7 @@
   color: #111827;
   text-transform: uppercase;
   line-height: 1.15;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.024em;
   margin: 0;
 }
 
@@ -139,7 +139,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: #d1d5db;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
   transition: color 0.25s ease;
 }
 
@@ -170,7 +170,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: #111827;
-  letter-spacing: 0.015em;
+  letter-spacing: -0.018em;
   margin: 0 0 0.65rem 0;
   line-height: 1.3;
   position: relative;
@@ -181,6 +181,7 @@
   font-family: var(--font-body);
   font-size: 14.5px;
   line-height: 1.65;
+  letter-spacing: -0.012em;
   color: #4b5563;
   margin: 0;
   position: relative;

@@ -52,7 +52,7 @@
   color: #111827;
   text-transform: uppercase;
   line-height: 1.15;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.024em;
   margin: 0 0 1.5rem 0;
 }
 
@@ -107,7 +107,7 @@
   font-weight: 700;
   color: #111827;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
 }
 
 .about-stat-item:hover .about-stat-num {
@@ -191,7 +191,7 @@
   font-weight: 700;
   color: #FFE38E;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
   text-shadow: 0 0 16px rgba(255, 227, 142, 0.4);
 }
 
@@ -299,7 +299,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: #111827;
-  letter-spacing: 0.015em;
+  letter-spacing: -0.018em;
   margin: 0;
 }
 
@@ -328,7 +328,7 @@
   font-size: 1.35rem;
   font-weight: 700;
   color: #111827;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.018em;
   margin: 0 0 2.5rem 0;
 }
 
