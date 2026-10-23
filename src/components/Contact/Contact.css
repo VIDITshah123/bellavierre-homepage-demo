@@ -43,18 +43,19 @@
 .contact-title {
   font-family: var(--font-display);
   font-size: 2.35rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.18;
   color: #111827;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   margin: 0;
   max-width: 800px;
 }
 
 .contact-subtitle {
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
   color: #6b7280;
   max-width: 650px;
   margin: 0;
@@ -135,7 +136,8 @@
   padding: 0.95rem 1.75rem;
   font-size: 0.95rem;
   font-weight: 600;
-  font-family: inherit;
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
   display: flex;
   align-items: center;
   justify-content: center;

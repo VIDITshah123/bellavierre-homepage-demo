@@ -142,9 +142,9 @@
   color: #ffffff;
   text-transform: uppercase;
   font-size: clamp(2.1rem, 4vw, 3.75rem);
-  font-weight: 800;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
   margin: 0 0 1rem 0;
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
 }
@@ -157,12 +157,13 @@
 }
 
 .hero-description-text {
-  font-family: var(--font-sans);
-  font-size: clamp(13.5px, 1.1vw, 15px);
-  line-height: 1.55;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.65;
   color: rgba(255, 255, 255, 0.88);
   font-weight: 400;
   margin: 0;
+  letter-spacing: 0.01em;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -241,17 +242,18 @@
 .achieve-number {
   font-family: var(--font-display);
   font-size: clamp(1.85rem, 3.1vw, 2.75rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   color: #ffffff;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
 }
 
 .achieve-label {
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 450;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.84);
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }

@@ -14,13 +14,14 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.012em;
 }
 
 img, video { max-width: 100%; display: block; }
@@ -31,10 +32,12 @@ input, select, textarea { font-family: inherit; }
 
 /* ── Design Tokens ── */
 :root {
-  /* Typography Families */
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  /* Typography Families — Ultra Luxury Dubai Real Estate */
+  --font-display: 'Cormorant Garamond', 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Lato', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
 
   /* Colors */
   --color-bg-primary:    #05070a;
@@ -102,6 +105,39 @@ input, select, textarea { font-family: inherit; }
   --t-fast:   180ms;
   --t-normal: 350ms;
   --t-slow:   600ms;
+}
+
+/* ── Global Ultra Luxury Typography Foundation ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+p, li, input, select, textarea {
+  font-family: var(--font-body);
+}
+
+.hero-heading,
+[class*="-heading"],
+[class*="-title"],
+.section-title {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+[class*="-stat-num"],
+[class*="-price-val"],
+[class*="-roi-val"],
+.stat-number {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+blockquote,
+[class*="-quote"] {
+  font-family: var(--font-serif);
+  font-style: italic;
 }
 
 /* ── Layout Utilities ── */

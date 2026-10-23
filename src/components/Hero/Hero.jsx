@@ -183,11 +183,11 @@ export default function Hero() {
 
         {/* Top/Main Content */}
         <div className="hero-content" ref={contentRef}>
-          {/* Dubai Market Indicator Pill */}
+          {/* Dubai Market Indicator Pill
           <div className="hero-market-pill">
             <span className="market-pill-dot" />
             <span className="market-pill-text">Dubai RERA Licensed • 2026 Prime Off-Plan Portfolio</span>
-          </div>
+          </div> */}
 
           <h1 className="hero-heading">
             <span className="hero-heading-line">YOUR DUBAI PROPERTY TEAM,</span><br />

@@ -40,11 +40,12 @@
 }
 
 .faq-heading {
+  font-family: var(--font-display);
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
   color: #111827;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   margin: 0;
 }
@@ -91,11 +92,12 @@
 }
 
 .faq-question-text {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: #1f2937;
   line-height: 1.4;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.015em;
   transition: color 0.2s ease;
 }
 
@@ -138,6 +140,7 @@
 }
 
 .faq-answer-text {
+  font-family: var(--font-body);
   font-size: 0.95rem;
   line-height: 1.7;
   color: #6b7280;

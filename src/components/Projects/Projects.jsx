@@ -154,12 +154,14 @@ export default function Projects() {
 
         {/* View All Properties Button */}
         <div className="properties-cta-center">
+          <div><br></br>
           <a href="#contact" className="view-all-properties-btn">
             <span>Book a Consultation For All Listings</span>
             <span className="view-all-arrow-circle" aria-hidden="true">
               <ArrowUpRight size={15} strokeWidth={2.5} />
             </span>
           </a>
+          </div>
         </div>
       </div>
 

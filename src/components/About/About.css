@@ -48,11 +48,11 @@
 .about-main-heading {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3vw, 2.6rem);
-  font-weight: 800;
+  font-weight: 700;
   color: #111827;
   text-transform: uppercase;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   margin: 0 0 1.5rem 0;
 }
 
@@ -62,9 +62,9 @@
 }
 
 .about-p {
-  font-family: var(--font-sans);
-  font-size: 14.5px;
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
   color: #4b5563;
   margin: 0 0 12px 0;
 }
@@ -104,10 +104,10 @@
 .about-stat-num {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-  font-weight: 800;
+  font-weight: 700;
   color: #111827;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
 }
 
 .about-stat-item:hover .about-stat-num {
@@ -188,10 +188,10 @@
 .authority-badge-num {
   font-family: var(--font-display);
   font-size: 2.2rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #FFE38E;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
   text-shadow: 0 0 16px rgba(255, 227, 142, 0.4);
 }
 
@@ -297,16 +297,16 @@
 .about-feature-title {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #111827;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.015em;
   margin: 0;
 }
 
 .about-feature-desc {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.68;
   color: #4b5563;
   margin: 0;
 }
@@ -328,7 +328,7 @@
   font-size: 1.35rem;
   font-weight: 700;
   color: #111827;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.03em;
   margin: 0 0 2.5rem 0;
 }
 

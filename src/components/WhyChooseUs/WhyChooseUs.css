@@ -40,11 +40,11 @@
 .why-choose-heading {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.4vw, 3rem);
-  font-weight: 800;
+  font-weight: 700;
   color: #111827;
   text-transform: uppercase;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   margin: 0;
 }
 
@@ -137,9 +137,9 @@
 .why-card-num {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #d1d5db;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   transition: color 0.25s ease;
 }
 
@@ -168,9 +168,9 @@
 .why-choose-card-title {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #111827;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.015em;
   margin: 0 0 0.65rem 0;
   line-height: 1.3;
   position: relative;
@@ -178,9 +178,9 @@
 }
 
 .why-choose-card-desc {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 14.5px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: #4b5563;
   margin: 0;
   position: relative;
