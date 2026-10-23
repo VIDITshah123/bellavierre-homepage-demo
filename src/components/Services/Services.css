@@ -329,8 +329,13 @@
   white-space: nowrap;
 }
 
+/* ── Mobile Tabs Switcher (Hidden on desktop) ── */
+.service-mobile-tabs {
+  display: none;
+}
+
 /* ── Responsive ── */
-@media (max-width: 991px) {
+@media (max-width: 991px) and (min-width: 769px) {
   .feature-service-wrap {
     flex-direction: column;
     gap: 36px;
@@ -361,33 +366,158 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .feature-service-section {
-    padding: 48px 16px;
+    padding: 44px 16px;
   }
-  .feature-service-right {
-    height: 380px;
+
+  .feature-service-wrap {
+    flex-direction: column;
+    gap: 20px;
   }
-  .feature-service-pane.is-collapsed {
-    flex: 0 0 50px;
-    width: 50px;
+
+  .feature-service-left {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 0;
   }
-  .service-vertical-text {
-    margin-bottom: 100px;
+
+  /* Show elegant 4-tab pill selector on mobile */
+  .service-mobile-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 4px;
   }
-  .spine-number {
-    font-size: 1.5rem;
+
+  .service-mobile-tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 10px 4px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    border: 1.5px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .spine-title {
+
+  .service-mobile-tab-btn:hover {
+    background: #e5e7eb;
+  }
+
+  .service-mobile-tab-btn.is-active {
+    background: linear-gradient(135deg, #090e17 0%, #04060a 100%);
+    border-color: rgba(255, 227, 142, 0.55);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    transform: translateY(-1px);
+  }
+
+  .mob-tab-num {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 800;
+    color: #4b5563;
+    line-height: 1;
+    transition: color 0.2s ease;
+  }
+
+  .service-mobile-tab-btn.is-active .mob-tab-num {
+    color: #FFE38E;
+  }
+
+  .mob-tab-label {
+    font-family: var(--font-sans);
     font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
   }
+
+  .service-mobile-tab-btn.is-active .mob-tab-label {
+    color: #ffffff;
+  }
+
+  /* Right column: Single unified card container with STRICT CONSTANT HEIGHT on every number */
+  .feature-service-right {
+    display: block !important;
+    width: 100% !important;
+    height: 270px !important;
+    min-height: 270px !important;
+    max-height: 270px !important;
+    border-radius: 1.5rem !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Hide collapsed vertical strip bars on mobile so they don't squish the active image */
+  .feature-service-pane.is-collapsed {
+    display: none !important;
+  }
+
+  /* Active pane takes 100% width and 100% height with EXACT CONSTANT DIMENSIONS on every number */
+  .feature-service-pane.is-active {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 1.5rem !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  .service-active-card {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    border-radius: 1.5rem !important;
+    overflow: hidden !important;
+  }
+
+  .service-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  /* Responsive bottom-right corner dock */
+  .service-corner-dock {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+  }
+
+  .service-corner-top-right,
+  .service-corner-bottom-left {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
   .service-badge-content {
-    padding: 0.85rem 1.25rem;
+    padding: 0.65rem 1.1rem !important;
+    border-top-left-radius: 1.5rem !important;
+    max-width: 180px !important;
+    box-shadow: -4px -4px 14px rgba(0, 0, 0, 0.06) !important;
   }
+
   .service-badge-num {
-    font-size: 1.8rem;
+    font-size: 1.7rem !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
   }
+
   .service-badge-title {
-    font-size: 11.5px;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+    margin-top: 2px !important;
   }
 }

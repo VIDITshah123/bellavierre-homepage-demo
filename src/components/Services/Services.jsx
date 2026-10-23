@@ -90,6 +90,27 @@ export default function Services() {
             </div>
           </div>
 
+          {/* Mobile Tabs Switcher (Visible only <= 768px) */}
+          <div className="service-mobile-tabs" role="tablist" aria-label="Services selector">
+            {servicesData.map((service, index) => {
+              const isActive = activeIndex === index
+              const shortTitle = service.tabTitle.split(' ')[0]
+              return (
+                <button
+                  key={service.id}
+                  type="button"
+                  className={`service-mobile-tab-btn ${isActive ? 'is-active' : ''}`}
+                  onClick={() => setActiveIndex(index)}
+                  role="tab"
+                  aria-selected={isActive}
+                >
+                  <span className="mob-tab-num">{service.tabNumber}</span>
+                  <span className="mob-tab-label">{shortTitle}</span>
+                </button>
+              )
+            })}
+          </div>
+
           {/* Right Column: Interactive Horizontal Accordion */}
           <div className="feature-service-right" role="tablist">
             {servicesData.map((service, index) => {
