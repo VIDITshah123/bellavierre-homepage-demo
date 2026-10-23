@@ -130,14 +130,6 @@ export default function Hero() {
           ease: 'power2.out',
         })
       }
-      if (ratingRef.current) {
-        gsap.to(ratingRef.current, {
-          x: -x * 15,
-          y: -y * 15,
-          duration: 0.8,
-          ease: 'power2.out',
-        })
-      }
     }
 
     card.addEventListener('mousemove', handleMouseMove)

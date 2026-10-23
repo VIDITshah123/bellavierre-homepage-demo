@@ -266,12 +266,15 @@
   right: 0;
   z-index: 5;
   pointer-events: auto;
+  cursor: default !important;
+  user-select: none;
 }
 
 .hero-rating-grid-item {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  cursor: default !important;
 }
 
 .corner-top-right {
@@ -281,6 +284,7 @@
   transform: rotate(180deg);
   display: block;
   line-height: 0;
+  pointer-events: none;
 }
 
 .corner-bottom-left {
@@ -290,6 +294,7 @@
   transform: rotate(180deg);
   display: block;
   line-height: 0;
+  pointer-events: none;
 }
 
 .corner-top-right svg,
@@ -299,7 +304,7 @@
   display: block;
 }
 
-/* White Badge Container */
+/* White Badge Container - Completely static, zero hover or pointer effects */
 .hero-rating-wrap {
   background-color: #ffffff;
   border-top-left-radius: 2rem;
@@ -307,6 +312,15 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: default !important;
+  pointer-events: auto;
+  transition: none !important;
+  transform: none !important;
+}
+
+.hero-rating-wrap *,
+.hero-rating-grid * {
+  cursor: default !important;
 }
 
 /* Agent Avatars */

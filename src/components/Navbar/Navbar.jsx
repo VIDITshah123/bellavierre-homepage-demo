@@ -135,23 +135,32 @@ export default function Navbar() {
         </div>
       </header>
 
+      {/* Mobile Backdrop */}
+      <div
+        className={`mobile-backdrop ${menuOpen ? 'is-open' : ''}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+
       {/* Mobile Drawer */}
       <div
         className={`mobile-drawer ${menuOpen ? 'is-open' : ''}`}
         aria-hidden={!menuOpen}
       >
         <div className="drawer-header">
-          <img
-            src="/logo.png"
-            alt="Bellavierre Real Estate"
-            className="brand-logo-img mobile-logo"
-          />
+          <div className="brand-logo mobile-brand-capsule">
+            <img
+              src="/logo.png"
+              alt="Bellavierre Real Estate"
+              className="brand-logo-img mobile-logo"
+            />
+          </div>
           <button
             className="drawer-close-btn"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
           >
-            <X size={24} />
+            <X size={22} />
           </button>
         </div>
 
@@ -163,7 +172,8 @@ export default function Navbar() {
               className={`drawer-link ${active === link.label ? 'active' : ''}`}
               onClick={(e) => handleNavClick(e, link.href, link.label)}
             >
-              {link.label}
+              <span>{link.label}</span>
+              <ArrowUpRight size={16} className="drawer-link-arrow" />
             </a>
           ))}
         </nav>
@@ -174,10 +184,11 @@ export default function Navbar() {
             className="drawer-cta"
             onClick={(e) => handleNavClick(e, '#contact', 'Contact')}
           >
-            Book Dubai Consultation
+            <span>Book Dubai Consultation</span>
+            <ArrowUpRight size={15} strokeWidth={2.5} />
           </a>
           <p className="drawer-contact-phone">
-            Direct: <a href="tel:+97145784312">+(971) 4 578 4312</a>
+            Direct VIP Desk: <a href="tel:+97145784312">+(971) 4 578 4312</a>
           </p>
         </div>
       </div>

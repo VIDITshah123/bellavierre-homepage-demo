@@ -54,6 +54,10 @@ export default function CustomCursor() {
 
     // Detect clickable elements to expand cursor
     const handleElementOver = (e) => {
+      if (e.target.closest('.hero-rating-grid')) {
+        setIsHovered(false)
+        return
+      }
       const target = e.target.closest('a, button, input, textarea, select, [role="button"], [role="tab"], .property-card, .why-choose-card, .expert-agent-card, .feature-service-pane')
       setIsHovered(!!target)
     }
