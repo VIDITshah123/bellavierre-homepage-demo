@@ -1,0 +1,725 @@
+/* ─────────────────────────────────────────
+   DUBAI ROI & GOLDEN VISA CALCULATOR
+   ───────────────────────────────────────── */
+
+.roi-calculator-section {
+  width: 100%;
+  background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 40%, #f4f6f8 100%);
+  padding: clamp(70px, 9vw, 110px) clamp(16px, 4vw, 60px);
+  position: relative;
+  overflow: hidden;
+}
+
+.roi-calculator-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ── Section Header ── */
+.roi-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto clamp(36px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.roi-badge-icon {
+  color: #d7aa42;
+}
+
+.roi-main-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+  font-weight: 800;
+  color: #111827;
+  text-transform: uppercase;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0 0 16px 0;
+}
+
+.roi-subtext {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.65;
+  color: #6b7280;
+  margin: 0 0 24px 0;
+}
+
+/* ── Currency Selector Bar ── */
+.roi-currency-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  padding: 6px 10px 6px 16px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-top: 4px;
+}
+
+.currency-bar-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.currency-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.currency-pill {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: transparent;
+  color: #4b5563;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.currency-pill:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.currency-pill.is-active {
+  background: #111827;
+  color: #FFE38E;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Main Interactive Card ── */
+.roi-glass-card {
+  background: linear-gradient(135deg, #0b111a 0%, #06090e 100%);
+  border-radius: 2.25rem;
+  border: 1px solid rgba(255, 227, 142, 0.22);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.roi-card-glow {
+  position: absolute;
+  top: -20%;
+  left: 20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 227, 142, 0.12) 0%, transparent 65%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Left Column: Controls ── */
+.roi-controls-col {
+  padding: clamp(2.25rem, 4vw, 3.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  position: relative;
+  z-index: 2;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.roi-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.roi-control-label {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Toggle Strategy */
+.roi-strategy-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.roi-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.roi-toggle-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.roi-toggle-btn.is-active {
+  background: linear-gradient(135deg, rgba(255, 227, 142, 0.22) 0%, rgba(215, 170, 66, 0.12) 100%);
+  color: #FFE38E;
+  border: 1px solid rgba(255, 227, 142, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Slider Controls */
+.roi-label-value-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.roi-live-value-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.roi-live-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #ffffff 30%, #FFE38E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.roi-live-value-sub {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.roi-range-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.roi-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FFF0B8 0%, #d7aa42 100%);
+  cursor: grab;
+  box-shadow: 0 0 16px rgba(255, 227, 142, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+  border: 2px solid #ffffff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.roi-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 22px rgba(255, 227, 142, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.roi-range-slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FFF0B8 0%, #d7aa42 100%);
+  cursor: grab;
+  box-shadow: 0 0 16px rgba(255, 227, 142, 0.6);
+  border: 2px solid #ffffff;
+}
+
+.roi-slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 4px;
+}
+
+/* Benchmarks Presets */
+.roi-presets-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roi-presets-caption {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.roi-preset-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.roi-preset-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.roi-preset-chip .chip-sub {
+  font-size: 10.5px;
+  opacity: 0.65;
+}
+
+.roi-preset-chip:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.roi-preset-chip.is-active {
+  background: #FFE38E;
+  color: #0b1019;
+  border-color: #FFE38E;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(255, 227, 142, 0.35);
+}
+
+.roi-preset-chip.is-active .chip-sub {
+  opacity: 0.9;
+  font-weight: 700;
+}
+
+/* Interactive Payment Schedule Box */
+.roi-payment-schedule-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.schedule-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFE38E;
+}
+
+.schedule-icon {
+  color: #FFE38E;
+}
+
+.schedule-title {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.schedule-bars-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.schedule-step {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-bar {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.step-bar.step-20 {
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+}
+
+.step-bar.step-40 {
+  background: linear-gradient(90deg, #d7aa42 0%, #FFE38E 100%);
+}
+
+.step-bar.step-handover {
+  background: linear-gradient(90deg, #60a5fa 0%, #93c5fd 100%);
+}
+
+.step-pct {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.step-val {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Golden Visa Status Certificate Card */
+.roi-visa-status-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+}
+
+.roi-visa-status-card.is-eligible {
+  background: linear-gradient(135deg, rgba(215, 170, 66, 0.18) 0%, rgba(13, 20, 32, 0.85) 100%);
+  border: 1.5px solid rgba(255, 227, 142, 0.5);
+  box-shadow: 0 8px 30px rgba(215, 170, 66, 0.18);
+}
+
+.roi-visa-status-card.is-pending {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roi-visa-icon-wrap {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.roi-visa-icon.gold {
+  color: #FFE38E;
+  filter: drop-shadow(0 0 8px rgba(255, 227, 142, 0.6));
+}
+
+.roi-visa-icon.silver {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.roi-visa-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.roi-visa-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.roi-visa-tag {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #10b981;
+  color: #ffffff;
+}
+
+.roi-visa-tag.pending {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.roi-visa-desc {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+/* ── Right Column: Dashboard ── */
+.roi-dashboard-col {
+  padding: clamp(2.25rem, 4vw, 3.75rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+  z-index: 2;
+}
+
+.roi-dashboard-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.roi-dashboard-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboard-icon {
+  color: #FFE38E;
+}
+
+.roi-dashboard-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.dashboard-live-indicator {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.roi-metrics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.roi-metric-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.25s ease;
+}
+
+.roi-metric-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateX(4px);
+}
+
+.roi-metric-card.highlight {
+  background: linear-gradient(135deg, rgba(255, 227, 142, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1.5px solid rgba(255, 227, 142, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.roi-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roi-metric-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.roi-metric-pct {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.roi-metric-pct.growth {
+  color: #FFE38E;
+  background: rgba(255, 227, 142, 0.15);
+}
+
+.roi-metric-value {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.roi-metric-value.gold {
+  color: #FFE38E;
+  font-size: 2rem;
+  text-shadow: 0 0 20px rgba(255, 227, 142, 0.3);
+}
+
+.roi-metric-sub {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Safeguards */
+.roi-safeguards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.roi-safeguard-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.roi-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* Action CTA */
+.roi-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: linear-gradient(180deg, #FFF0B8 0%, #F4CA5D 100%);
+  color: #0b1019;
+  border: 1px solid rgba(255, 247, 215, 0.8);
+  border-radius: 999px;
+  padding: 8px 8px 8px 26px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 28px rgba(255, 227, 142, 0.25);
+}
+
+.roi-action-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 16px 36px rgba(255, 227, 142, 0.4);
+}
+
+.roi-btn-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #0b1019;
+  color: #FFE38E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.roi-action-btn:hover .roi-btn-circle {
+  transform: translateX(3px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .roi-glass-card {
+    grid-template-columns: 1fr;
+  }
+  .roi-controls-col {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 640px) {
+  .roi-calculator-section {
+    padding: 60px 16px;
+  }
+  .roi-strategy-toggle {
+    grid-template-columns: 1fr;
+  }
+  .roi-glass-card {
+    border-radius: 1.5rem;
+  }
+  .roi-controls-col,
+  .roi-dashboard-col {
+    padding: 1.75rem 1.25rem;
+  }
+  .roi-action-btn {
+    padding: 8px 8px 8px 18px;
+    font-size: 13px;
+  }
+  .schedule-bars-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

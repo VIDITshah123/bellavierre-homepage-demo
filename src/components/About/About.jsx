@@ -61,30 +61,40 @@ export default function About() {
       )
     }
 
-    // Stagger Reveal on Pillars & Stats
+    // Reveal on Pillars & Stats without risk of staying hidden
     const ctx = gsap.context(() => {
-      gsap.from('.about-col-left', {
-        x: -40,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-        },
-      })
+      gsap.fromTo(
+        '.about-col-left',
+        { x: -30, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+          },
+        }
+      )
 
-      gsap.from('.about-feature-item', {
-        x: 40,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-        },
-      })
+      gsap.fromTo(
+        '.about-feature-item',
+        { x: 30, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+          },
+        }
+      )
     }, sectionRef)
 
     return () => ctx.revert()
@@ -129,28 +139,40 @@ export default function About() {
             </div>
           </div>
 
-          {/* Middle Column: Team Image with Parallax */}
+          {/* Middle Column: Team Image with Parallax & Floating Badge */}
           <div className="about-col about-col-middle">
             <div className="about-image-card">
               <img
                 ref={teamImgRef}
-                src="https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6788a87b1d5db7654ca7e7cd_group-confident-businesspeople-office.jpg"
-                alt="Bellavierre Real Estate Team in Dubai"
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=85"
+                alt="Bellavierre Real Estate Advisory Team in Dubai"
                 className="about-team-img parallax-team-img"
                 loading="lazy"
               />
+              <div className="about-img-gradient-overlay" aria-hidden="true" />
+              {/* Floating Luxury Authority Badge */}
+              <div className="about-floating-authority-badge">
+                <span className="authority-badge-num">15+</span>
+                <div className="authority-badge-text">
+                  <span className="authority-bold">Years of Trust</span>
+                  <span className="authority-sub">Dubai Luxury Market</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: 3 Pillars with 3D Tilt */}
+          {/* Right Column: 3 Interactive Feature Pillar Cards */}
           <div className="about-col about-col-right">
             {/* Feature 1: Our Vision */}
             <div className="about-feature-item">
               <div className="about-feature-header">
                 <div className="about-feature-icon-wrap" aria-hidden="true">
-                  <Eye size={22} strokeWidth={2.2} />
+                  <Eye size={20} strokeWidth={2.2} className="about-feature-icon" />
                 </div>
-                <h3 className="about-feature-title">Our Vision</h3>
+                <div className="about-feature-title-wrap">
+                  <span className="about-feature-num">01</span>
+                  <h3 className="about-feature-title">Our Vision</h3>
+                </div>
               </div>
               <p className="about-feature-desc">
                 To be a trusted leader in the Dubai luxury real estate market, offering unparalleled advisory across premium off-plan developments, prime beachfront communities, and high-yield investments.
@@ -161,9 +183,12 @@ export default function About() {
             <div className="about-feature-item">
               <div className="about-feature-header">
                 <div className="about-feature-icon-wrap" aria-hidden="true">
-                  <Users size={22} strokeWidth={2.2} />
+                  <Users size={20} strokeWidth={2.2} className="about-feature-icon" />
                 </div>
-                <h3 className="about-feature-title">Expert Team</h3>
+                <div className="about-feature-title-wrap">
+                  <span className="about-feature-num">02</span>
+                  <h3 className="about-feature-title">Expert Team</h3>
+                </div>
               </div>
               <p className="about-feature-desc">
                 Our team comprises seasoned professionals with extensive experience in Dubai luxury real estate, developer track-record analysis, overseas buyer guidance, and handover coordination.
@@ -174,9 +199,12 @@ export default function About() {
             <div className="about-feature-item">
               <div className="about-feature-header">
                 <div className="about-feature-icon-wrap" aria-hidden="true">
-                  <Hand size={22} strokeWidth={2.2} />
+                  <Hand size={20} strokeWidth={2.2} className="about-feature-icon" />
                 </div>
-                <h3 className="about-feature-title">Tailored Solutions</h3>
+                <div className="about-feature-title-wrap">
+                  <span className="about-feature-num">03</span>
+                  <h3 className="about-feature-title">Tailored Solutions</h3>
+                </div>
               </div>
               <p className="about-feature-desc">
                 We coordinate virtual viewings, project comparisons, documentation and handover around your time zone, so distance never means losing visibility or control.

@@ -179,17 +179,24 @@ export default function Hero() {
         <div className="hero-bg-image-wrapper" aria-hidden="true">
           <img
             ref={bgImageRef}
-            src="https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6784958c2c4ad0bc028ac10a_hero-bg-v4.jpg"
-            alt="Dubai Luxury Architecture Skyline"
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2600&q=90"
+            alt="Dubai Luxury Architecture Skyline at Golden Twilight"
             className="hero-parallax-bg-img"
             loading="eager"
           />
           <div className="hero-bg-overlay" />
           <div className="hero-ambient-glow" />
+          <div className="hero-light-beam" />
         </div>
 
         {/* Top/Main Content */}
         <div className="hero-content" ref={contentRef}>
+          {/* Dubai Market Indicator Pill */}
+          <div className="hero-market-pill">
+            <span className="market-pill-dot" />
+            <span className="market-pill-text">Dubai RERA Licensed • 2026 Prime Off-Plan Portfolio</span>
+          </div>
+
           <h1 className="hero-heading">
             <span className="hero-heading-line">YOUR DUBAI PROPERTY TEAM,</span><br />
             <span className="hero-heading-line">ON THE GROUND FOR YOU</span>

@@ -5,6 +5,7 @@ import Services from './components/Services/Services'
 import About from './components/About/About'
 import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs'
 import Projects from './components/Projects/Projects'
+import RoiCalculator from './components/Calculator/RoiCalculator'
 import Experts from './components/Experts/Experts'
 import Testimonials from './components/Testimonials/Testimonials'
 import InstagramFeed from './components/Instagram/Instagram'
@@ -30,6 +31,7 @@ export default function App() {
         <About />
         <WhyChooseUs />
         <Projects />
+        <RoiCalculator />
         <Experts />
         <Testimonials />
         <InstagramFeed />

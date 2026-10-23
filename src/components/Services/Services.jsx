@@ -11,7 +11,7 @@ const servicesData = [
     description:
       'Personal guidance for overseas buyers, from project comparison and virtual viewings through reservation and purchase coordination.',
     image:
-      'https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6786568b93ec2b5dae785852_house-5.jpg',
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=85',
     badgeNumber: '01',
     badgeTitle: 'Overseas Buyer Advisory',
     icon: Compass,
@@ -24,7 +24,7 @@ const servicesData = [
     description:
       'We compare developers, locations, payment plans and handover timelines so you can buy with clarity.',
     image:
-      'https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6786688697eec2f2a2f3f2d9_house-7.jpg',
+      'https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1600&q=85',
     badgeNumber: '02',
     badgeTitle: 'Project Selection & Due Diligence',
     icon: Building2,
@@ -37,7 +37,7 @@ const servicesData = [
     description:
       'Advice shaped around your budget, goals and preferred timeline — whether you prioritise rental income, capital growth or a future Dubai home.',
     image:
-      'https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6786568bef7816994a422048_house-2.jpg',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85',
     badgeNumber: '03',
     badgeTitle: 'Investment Strategy',
     icon: TrendingUp,
@@ -50,7 +50,7 @@ const servicesData = [
     description:
       'From reservation and documentation to developer coordination and final handover, our Dubai team supports you at every stage.',
     image:
-      'https://cdn.prod.website-files.com/67875eb8de2529a75075fafd/678768eb2c5c35b7399d862a_property-4.jpg',
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
     badgeNumber: '04',
     badgeTitle: 'End to End Support',
     icon: ShieldCheck,

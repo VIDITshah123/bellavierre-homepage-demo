@@ -215,8 +215,8 @@ export default function Contact() {
         <div className="contact-bg-gradient-top"></div>
         <img
           ref={bgImageRef}
-          src="https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6789e453099e81e883a098fd_minimalist-architecture-space-(7).jpg"
-          alt="Modern luxury villa architectural backdrop"
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=90"
+          alt="Modern luxury Dubai architectural estate backdrop"
           className="contact-bg-image parallax-villa"
           loading="lazy"
         />

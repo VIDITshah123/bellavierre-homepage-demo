@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Who We Are', href: '#about', id: 'about' },
   { label: 'Why Us', href: '#why-us', id: 'why-us' },
   { label: 'Projects', href: '#projects', id: 'projects' },
+  { label: 'ROI Calculator', href: '#roi-calculator', id: 'roi-calculator' },
   { label: 'Contact', href: '#contact', id: 'contact' },
 ]
 

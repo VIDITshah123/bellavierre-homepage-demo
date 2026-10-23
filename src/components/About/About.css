@@ -37,7 +37,7 @@
   border: 1px solid #d1d5db;
   border-radius: 999px;
   padding: 5px 18px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 500;
   color: #4b5563;
@@ -46,9 +46,9 @@
 }
 
 .about-main-heading {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 3vw, 2.6rem);
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
   text-transform: uppercase;
   line-height: 1.15;
@@ -62,7 +62,7 @@
 }
 
 .about-p {
-  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 14.5px;
   line-height: 1.65;
   color: #4b5563;
@@ -73,14 +73,26 @@
 .about-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.75rem 1.5rem;
-  margin-top: 2rem;
-  padding-top: 1rem;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  padding-top: 0.5rem;
 }
 
 .about-stat-item {
   display: flex;
   flex-direction: column;
+  background: #f8fafc;
+  padding: 1.25rem 1.4rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  transition: all 0.25s ease;
+}
+
+.about-stat-item:hover {
+  background: #ffffff;
+  border-color: rgba(215, 170, 66, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08);
 }
 
 .about-stat-number-wrap {
@@ -90,27 +102,31 @@
 }
 
 .about-stat-num {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2rem, 2.7vw, 2.6rem);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 800;
   color: #111827;
   line-height: 1;
   letter-spacing: -0.03em;
 }
 
+.about-stat-item:hover .about-stat-num {
+  color: #855e16;
+}
+
 .about-stat-suffix {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #111827;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #d7aa42;
   margin-left: 2px;
 }
 
 .about-stat-label {
-  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 13px;
   color: #6b7280;
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 6px;
 }
 
@@ -126,8 +142,8 @@
   min-height: 560px;
   border-radius: 2rem;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-  background-color: #f3f4f6;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  background-color: #0b1019;
   position: relative;
 }
 
@@ -142,65 +158,153 @@
   will-change: transform;
 }
 
-/* ── Right Column (3 Value Pillars) ── */
+.about-img-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(7, 12, 20, 0.75) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Floating Luxury Authority Badge */
+.about-floating-authority-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background: rgba(9, 14, 23, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 227, 142, 0.35);
+  border-radius: 1.25rem;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+}
+
+.authority-badge-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #FFE38E;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 16px rgba(255, 227, 142, 0.4);
+}
+
+.authority-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authority-bold {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.authority-sub {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Right Column (3 Interactive Value Pillars) ── */
 .about-col-right {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .about-feature-item {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem 1.5rem;
-  border-radius: 1.25rem;
-  border: 1px solid transparent;
-  background-color: transparent;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 1.5rem 1.6rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
+  position: relative;
+  overflow: hidden;
 }
 
 .about-feature-item:hover {
   background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
+  border-color: rgba(215, 170, 66, 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 227, 142, 0.15);
 }
 
 .about-feature-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 14px;
+  margin-bottom: 10px;
 }
 
 .about-feature-icon-wrap {
-  color: #111827;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #090e17 0%, #162032 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1.5px solid rgba(255, 227, 142, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   flex-shrink: 0;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.about-feature-icon {
+  color: #FFE38E !important;
+  stroke: #FFE38E !important;
 }
 
 .about-feature-item:hover .about-feature-icon-wrap {
-  transform: scale(1.15) rotate(5deg);
-  color: #c5a880;
+  transform: scale(1.1) rotate(6deg);
+  border-color: #FFE38E;
+}
+
+.about-feature-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.about-feature-num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #d7aa42;
+  letter-spacing: 0.04em;
+  background: rgba(255, 227, 142, 0.2);
+  padding: 2px 8px;
+  border-radius: 6px;
 }
 
 .about-feature-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
   letter-spacing: -0.015em;
   margin: 0;
 }
 
 .about-feature-desc {
-  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 14px;
   line-height: 1.65;
   color: #4b5563;
@@ -220,7 +324,7 @@
 }
 
 .partners-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 700;
   color: #111827;

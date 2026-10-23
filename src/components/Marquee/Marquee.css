@@ -41,7 +41,7 @@
 }
 
 .marquee-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(12px, 1.2vw, 15px);
   font-weight: 600;
   letter-spacing: 0.18em;

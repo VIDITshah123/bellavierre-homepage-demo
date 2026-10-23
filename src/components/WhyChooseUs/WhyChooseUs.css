@@ -29,7 +29,7 @@
   border: 1px solid #d1d5db;
   border-radius: 999px;
   padding: 5px 18px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 500;
   color: #4b5563;
@@ -38,9 +38,9 @@
 }
 
 .why-choose-heading {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 3.4vw, 3rem);
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
   text-transform: uppercase;
   line-height: 1.15;
@@ -57,9 +57,9 @@
 
 /* ── Individual Card with 3D Tilt ── */
 .why-choose-card {
-  background-color: #f4f5f7;
-  border-radius: 2rem;
-  padding: 2.75rem 2.25rem 2.5rem 2.25rem;
+  background: #ffffff;
+  border-radius: 1.75rem;
+  padding: 2.25rem 2rem 2.25rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -67,8 +67,9 @@
   overflow: hidden;
   will-change: transform;
   transform-style: preserve-3d;
-  transition: transform 0.15s ease-out, box-shadow 0.25s ease, background-color 0.25s ease;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
 .card-spotlight-glare {
@@ -76,8 +77,8 @@
   inset: 0;
   pointer-events: none;
   background: radial-gradient(
-    circle 260px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
-    rgba(255, 255, 255, 0.65),
+    circle 280px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(255, 227, 142, 0.18),
     transparent 70%
   );
   opacity: 0;
@@ -91,44 +92,115 @@
 }
 
 .why-choose-card:hover {
-  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 227, 142, 0.18);
+  border-color: rgba(215, 170, 66, 0.45);
 }
 
-/* Circular White Icon Box */
+/* ── Top Header Row ── */
+.why-card-top-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Circular Obsidian & Gold Icon Box */
 .why-choose-icon-box {
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #090e17 0%, #162032 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.5rem;
+  border: 1.5px solid rgba(255, 227, 142, 0.38);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
   flex-shrink: 0;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.why-choose-icon {
-  color: #111827;
+.why-choose-card:hover .why-choose-icon-box {
+  transform: scale(1.08) rotate(4deg);
+  border-color: #FFE38E;
+  box-shadow: 0 8px 24px rgba(255, 227, 142, 0.35);
+}
+
+.why-icon-svg {
+  color: #FFE38E !important;
+  stroke: #FFE38E !important;
+  display: block;
+}
+
+.why-card-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #d1d5db;
+  letter-spacing: -0.02em;
+  transition: color 0.25s ease;
+}
+
+.why-choose-card:hover .why-card-num {
+  color: #d7aa42;
+}
+
+/* Category Tag Pill */
+.why-card-pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #855e16;
+  background: rgba(255, 227, 142, 0.22);
+  border: 1px solid rgba(215, 170, 66, 0.35);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+  position: relative;
+  z-index: 2;
 }
 
 .why-choose-card-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
   letter-spacing: -0.015em;
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.3;
+  position: relative;
+  z-index: 2;
 }
 
 .why-choose-card-desc {
-  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 14.5px;
   line-height: 1.6;
   color: #4b5563;
   margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Bottom Gold Accent Bar */
+.why-card-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FFE38E 0%, #d7aa42 100%);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0 0 1.75rem 1.75rem;
+}
+
+.why-choose-card:hover .why-card-accent-line {
+  width: 100%;
 }
 
 /* ── Responsive ── */

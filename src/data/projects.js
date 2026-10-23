@@ -8,7 +8,7 @@ export const properties = [
     beds: 5,
     baths: 4,
     sqft: '3,800',
-    image: 'https://cdn.prod.website-files.com/67875eb8de2529a75075fafd/6787673905e3b068ab915da2_property-5.jpg',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85',
     link: '#contact',
   },
   {
@@ -20,7 +20,7 @@ export const properties = [
     beds: 4,
     baths: 2,
     sqft: '2,100',
-    image: 'https://cdn.prod.website-files.com/67875eb8de2529a75075fafd/67876871db9290b4eec353ca_property-2.jpg',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85',
     link: '#contact',
   },
   {
@@ -32,7 +32,7 @@ export const properties = [
     beds: 6,
     baths: 4,
     sqft: '2,780',
-    image: 'https://cdn.prod.website-files.com/67875eb8de2529a75075fafd/678768eb2c5c35b7399d862a_property-4.jpg',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85',
     link: '#contact',
   },
   {
@@ -44,7 +44,7 @@ export const properties = [
     beds: 3,
     baths: 2,
     sqft: '1,500',
-    image: 'https://cdn.prod.website-files.com/67875eb8de2529a75075fafd/67876ea22b88c5206a9f9956_property-6.jpg',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85',
     link: '#contact',
   },
   {
@@ -56,7 +56,7 @@ export const properties = [
     beds: 7,
     baths: 5,
     sqft: '3,100',
-    image: 'https://cdn.prod.website-files.com/67875eb8de2529a75075fafd/67876e97b800277f3002a8e0_property-8.jpg',
+    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=85',
     link: '#contact',
   },
   {
@@ -68,7 +68,7 @@ export const properties = [
     beds: 2,
     baths: 2,
     sqft: '2,200',
-    image: 'https://cdn.prod.website-files.com/67875eb8de2529a75075fafd/678769f5b802b59e3c466adb_property-0.jpg',
+    image: 'https://images.unsplash.com/photo-1567496898669-ee935f5f647a?auto=format&fit=crop&w=1200&q=85',
     link: '#contact',
   },
 ]

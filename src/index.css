@@ -14,11 +14,13 @@ html {
 }
 
 body {
-  font-family: 'Geist', 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   overflow-x: hidden;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img, video { max-width: 100%; display: block; }
@@ -29,40 +31,45 @@ input, select, textarea { font-family: inherit; }
 
 /* ── Design Tokens ── */
 :root {
+  /* Typography Families */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
   /* Colors */
   --color-bg-primary:    #05070a;
-  --color-bg-secondary:  #0c1117;
-  --color-bg-elevated:   #111820;
+  --color-bg-secondary:  #0b1017;
+  --color-bg-elevated:   #121924;
   --color-border:        rgba(255,255,255,0.10);
-  --color-border-gold:   rgba(255,227,142,0.18);
+  --color-border-gold:   rgba(255,227,142,0.22);
 
   --color-gold:          #FFE38E;
   --color-gold-deep:     #d7aa42;
   --color-gold-muted:    rgba(255,227,142,0.12);
-  --color-gold-glow:     rgba(255,227,142,0.15);
+  --color-gold-glow:     rgba(255,227,142,0.18);
 
   --color-text-primary:   #FFFFFF;
-  --color-text-secondary: rgba(255,255,255,0.60);
-  --color-text-muted:     rgba(255,255,255,0.35);
+  --color-text-secondary: rgba(255,255,255,0.68);
+  --color-text-muted:     rgba(255,255,255,0.42);
 
   --color-tag-offplan: #FFE38E;
   --color-tag-ready:   #7dd9a7;
 
   /* Typography */
-  --fs-hero: clamp(40px, 5.5vw, 82px);
-  --fs-h2:   clamp(30px, 3.2vw, 52px);
+  --fs-hero: clamp(36px, 4.8vw, 72px);
+  --fs-h2:   clamp(28px, 3vw, 48px);
   --fs-h3:   clamp(17px, 1.8vw, 24px);
-  --fs-body: 16px;
+  --fs-body: 15px;
   --fs-small: 13px;
   --fs-badge: 11px;
-  --fs-stat:  clamp(34px, 4.5vw, 64px);
+  --fs-stat:  clamp(30px, 3.8vw, 54px);
 
   --fw-light:   300;
   --fw-regular: 400;
   --fw-medium:  500;
   --fw-semi:    600;
   --fw-bold:    700;
-  --fw-black:   900;
+  --fw-black:   800;
 
   /* Spacing */
   --space-xs:  4px;
@@ -108,7 +115,7 @@ input, select, textarea { font-family: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: var(--fs-badge);
   font-weight: var(--fw-semi);
   letter-spacing: 0.16em;
@@ -131,7 +138,7 @@ input, select, textarea { font-family: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: var(--fw-bold);
   color: #080b0f;
@@ -157,7 +164,7 @@ input, select, textarea { font-family: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: var(--fw-semi);
   color: var(--color-gold);

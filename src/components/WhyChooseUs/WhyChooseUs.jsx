@@ -9,6 +9,8 @@ gsap.registerPlugin(ScrollTrigger)
 const reasons = [
   {
     id: 1,
+    num: '01',
+    badge: 'INVESTOR ALIGNED',
     icon: ShieldCheck,
     title: 'Client-First Advice',
     description:
@@ -16,6 +18,8 @@ const reasons = [
   },
   {
     id: 2,
+    num: '02',
+    badge: 'ON-GROUND EXPERTISE',
     icon: Users,
     title: 'Experts with Team Spirit',
     description:
@@ -23,6 +27,8 @@ const reasons = [
   },
   {
     id: 3,
+    num: '03',
+    badge: 'ESCROW VERIFIED',
     icon: Search,
     title: 'Transparent Process',
     description:
@@ -30,6 +36,8 @@ const reasons = [
   },
   {
     id: 4,
+    num: '04',
+    badge: 'KEY HANDOVER',
     icon: FolderKanban,
     title: 'End-to-End Support',
     description:
@@ -37,6 +45,8 @@ const reasons = [
   },
   {
     id: 5,
+    num: '05',
+    badge: 'GLOBAL 24/7',
     icon: Globe,
     title: 'Time Zone Alignment',
     description:
@@ -44,6 +54,8 @@ const reasons = [
   },
   {
     id: 6,
+    num: '06',
+    badge: 'EXCLUSIVE INVENTORY',
     icon: Building2,
     title: 'Direct Developer Access',
     description:
@@ -63,10 +75,10 @@ function TiltCard({ item }) {
     const x = (e.clientX - rect.left) / rect.width
     const y = (e.clientY - rect.top) / rect.height
 
-    const rotateX = (0.5 - y) * 12
-    const rotateY = (x - 0.5) * 12
+    const rotateX = (0.5 - y) * 10
+    const rotateY = (x - 0.5) * 10
 
-    el.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale(1.02)`
+    el.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`
     el.style.setProperty('--spotlight-x', `${(x * 100).toFixed(1)}%`)
     el.style.setProperty('--spotlight-y', `${(y * 100).toFixed(1)}%`)
   }
@@ -74,7 +86,7 @@ function TiltCard({ item }) {
   const handleMouseLeave = () => {
     const el = cardRef.current
     if (!el) return
-    el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)'
+    el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)'
   }
 
   return (
@@ -85,11 +97,20 @@ function TiltCard({ item }) {
       onMouseLeave={handleMouseLeave}
     >
       <div className="card-spotlight-glare" aria-hidden="true" />
-      <div className="why-choose-icon-box" aria-hidden="true">
-        <Icon size={26} strokeWidth={2} className="why-icon" />
+      
+      {/* Top Header Row with Obsidian Icon and Gold Number */}
+      <div className="why-card-top-row">
+        <div className="why-choose-icon-box" aria-hidden="true">
+          <Icon size={24} strokeWidth={2.2} className="why-icon-svg" />
+        </div>
+        <span className="why-card-num">{item.num}</span>
       </div>
+
+      <div className="why-card-pill">{item.badge}</div>
       <h3 className="why-choose-card-title">{item.title}</h3>
       <p className="why-choose-card-desc">{item.description}</p>
+      
+      <div className="why-card-accent-line" aria-hidden="true" />
     </div>
   )
 }

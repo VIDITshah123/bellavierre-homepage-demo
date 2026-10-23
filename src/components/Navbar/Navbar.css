@@ -37,29 +37,44 @@
   justify-content: space-between;
 }
 
-/* ── Brand Logo ── */
+/* ── Brand Logo with Luxury Obsidian Capsule for Contrast ── */
 .brand-logo {
   display: flex;
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+  background: linear-gradient(135deg, #090e17 0%, #04060a 100%);
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 227, 142, 0.35);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.brand-logo:hover {
+  background: linear-gradient(135deg, #0e1624 0%, #070b12 100%);
+  border-color: rgba(255, 227, 142, 0.7);
+  box-shadow: 0 6px 24px rgba(255, 227, 142, 0.25), 0 4px 14px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
 }
 
 .brand-logo-img {
-  height: 52px;
+  height: 44px;
   width: auto;
-  max-width: 170px;
+  max-width: 160px;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
   transition: transform 0.2s ease;
 }
 
 .brand-logo:hover .brand-logo-img {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .mobile-logo {
-  height: 44px;
+  height: 40px;
 }
 
 /* ── Navigation Links ── */
@@ -70,9 +85,9 @@
 }
 
 .nav-link {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 14.5px;
-  font-weight: 500;
+  font-weight: 550;
   color: #4b5563;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -152,7 +167,7 @@
 }
 
 .btn-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-sans);
   font-size: 13.5px;
   font-weight: 600;
   color: #ffffff;
@@ -232,9 +247,9 @@
 }
 
 .mobile-drawer-link {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-size: 19px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1f2937;
   text-decoration: none;
   display: block;
